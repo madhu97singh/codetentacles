@@ -69,7 +69,7 @@ class SellerAuthController extends Controller
                 'seller_detail' => $seller_detail,
             ];
 
-            return response()->json(['data' => $seller_detail, 'status' => 200, 'message' => __('messages.Seller created successfully')], 200);
+            return response()->json(['data' => $seller_detail, 'status' => 200, 'message' => 'Seller created successfully'], 200);
         }catch (Exception $e) {
             
             return \Response::json(['error'=> ['message'=>$e->getMessdob()]], HttpResponse::HTTP_CONFLICT)->setCallback(Input::get('callback'));
@@ -139,7 +139,7 @@ class SellerAuthController extends Controller
         try{
             $user = auth()->user();
             $sellers_list = Seller::paginate(10);
-            return response()->json(['data'=>$sellers_list,'status' =>200,'message'=> __('messages.Sellers data get Successfully')], 200);
+            return response()->json(['data'=>$sellers_list,'status' =>200,'message'=> 'Sellers data get Successfully'], 200);
 
         }catch (Exception $e) {
             return \Response::json(['error'=> ['message'=>$e->getMessdob()]], HttpResponse::HTTP_CONFLICT)->setCallback(Input::get('callback'));

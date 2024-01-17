@@ -77,7 +77,7 @@ class ProductController extends Controller
             $seller = auth()->user();
             $seller_id = Seller::select('id')->where(['user_id' => $seller->id])->first();
             $products = Product::where('seller_id', $seller_id->id)->with('brands')->paginate(10);
-            return response()->json(['data'=>$products,'status' =>200,'message'=> __('messages.Products data get Successfully')], 200);
+            return response()->json(['data'=>$products,'status' =>200,'message'=> 'Products data get Successfully'], 200);
 
         }catch (Exception $e) {
             return \Response::json(['error'=> ['message'=>$e->getMessdob()]], HttpResponse::HTTP_CONFLICT)->setCallback(Input::get('callback'));
@@ -114,7 +114,7 @@ class ProductController extends Controller
                 return response()->json(['error' => 'Product not found or unauthorized.'], 404);
             }
             $product->delete();
-            return response()->json(['data'=>$product,'status' =>200,'message'=> __('messages.Products deleted Successfully')], 200);
+            return response()->json(['data'=>$product,'status' =>200,'message'=> 'Products deleted Successfully'], 200);
 
         }catch (Exception $e) {
             return \Response::json(['error'=> ['message'=>$e->getMessdob()]], HttpResponse::HTTP_CONFLICT)->setCallback(Input::get('callback'));

@@ -54,7 +54,7 @@ class AdminAuthController extends Controller
                 'admin_detail' => $admin_detail,
             ];
 
-            return response()->json(['data' => $admin_detail, 'status' => 200, 'message' => __('messages.Admin created successfully')], 200);
+            return response()->json(['data' => $admin_detail, 'status' => 200, 'message' => 'Admin created successfully'], 200);
         }catch (Exception $e) {
             
             return \Response::json(['error'=> ['message'=>$e->getMessdob()]], HttpResponse::HTTP_CONFLICT)->setCallback(Input::get('callback'));
